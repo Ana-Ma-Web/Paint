@@ -1,4 +1,42 @@
 
+body, html {margin: 0;}
+.container {
+   max-width: 1280;
+}
+
+// === CITY RIVER === 
+
+.block1 {
+   // === Colors === 
+   //Sky
+   --hue-sky: 210;
+   --color-sky-lightest: hsl(180, 65%, 91%);
+   --color-sky-light: hsl(185, 38%, 78%);
+   --color-sky-dark: hsl(191, 50%, 70%);
+   --color-sky-darkest: hsl(196, 44%, 60%);
+
+   &__container {
+      width: 800px;
+      height: 600px;
+      margin: 0 auto;
+   }
+   &__sky {
+      width: 100%;
+      height: 50%;
+      background: linear-gradient( hsl(var(--hue-sky), 92%, 70%) 0%, hsl(var(--hue-sky), 100%, 98%) 100%);
+   }
+   &__sun {
+   }
+   &__smoke {
+   }
+   &__clouds-bottom {
+   }
+   &__clouds-middle {
+   }
+   &__clouds-top {
+   }
+}
+
 
 
 
