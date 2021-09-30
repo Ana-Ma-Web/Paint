@@ -6,34 +6,213 @@ body, html {margin: 0;}
 
 // === CITY RIVER === 
 
+.block1 *, .block1 *::before, .block1 *::after{
+   // position: absolute;
+   content: '';
+}
+.block1 *, .block1 *::before, .block1 *::after{
+   top: 0;
+   left: 0;
+   width: 20px;
+   height: 20px;
+
+}
 .block1 {
    // === Colors === 
    //Sky
-   --hue-sky: 210;
-   --color-sky-lightest: hsl(180, 65%, 91%);
-   --color-sky-light: hsl(185, 38%, 78%);
-   --color-sky-dark: hsl(191, 50%, 70%);
-   --color-sky-darkest: hsl(196, 44%, 60%);
+   --hue-sky: 185;
+   --saturation-sky: 92%;
+   --lightness-sky: 70%;
+   --color-sky-top: hsl(var(--hue-sky), var(--saturation-sky), var(--lightness-sky));
+   --color-sky-bottom: hsl(var(--hue-sky), calc(var(--saturation-sky) + 8%), calc(var(--lightness-sky) + 30%));
 
+   //Clouds
+   --hue-cloud: 180;
+   --saturation-cloud: 15%;
+   --lightness-cloud: 96%;
+   --color-cloud-lightest: hsl(calc(var(--hue-cloud) - 3), calc(var(--saturation-cloud) + 12%), calc(var(--lightness-cloud) + 10%));
+   --color-cloud-light: hsl(var(--hue-cloud), var(--saturation-cloud), var(--lightness-cloud));
+   --color-cloud-dark: hsl(calc(var(--hue-cloud) + 6), calc(var(--saturation-cloud) + 12%), calc(var(--lightness-cloud) - 8%));
+   --color-cloud-darkest: hsl(calc(var(--hue-cloud) + 11), calc(var(--saturation-cloud) + 6%), calc(var(--lightness-cloud) - 18%));
+
+   // --color-sky-lightest: hsl(180, 65%, 91%);
+   // --color-sky-light: hsl(185, 38%, 78%);
+   // --color-sky-dark: hsl(191, 50%, 70%);
+   // --color-sky-darkest: hsl(196, 44%, 60%);
+
+
+   position: relative;
    &__container {
       width: 800px;
       height: 600px;
-      margin: 0 auto;
+      margin: auto;
    }
    &__sky {
-      width: 100%;
-      height: 50%;
-      background: linear-gradient( hsl(var(--hue-sky), 92%, 70%) 0%, hsl(var(--hue-sky), 100%, 98%) 100%);
+      width: 800px;
+      height: 300px;
+      background: linear-gradient(var(--color-sky-top) 0%, var(--color-sky-bottom) 100%);
+      display: flex;
+      flex-direction: column-reverse;
    }
    &__sun {
+      position: absolute;
    }
    &__smoke {
+      position: absolute;
    }
    &__clouds-bottom {
+      height: 20%;
+      width: 100%;
    }
    &__clouds-middle {
+      height: 30%;
+      width: 100%;
+      position: relative;
    }
    &__clouds-top {
+      height: 40%;
+      width: 100%;
+   }
+   &__cloud {
+      --cloud-size: 100px;
+      position: absolute;
+      box-sizing: border-box;
+      top: 50%;
+      left: 50%;
+      width: var(--cloud-size);
+      height: calc(var(--cloud-size) / 4);
+      background-color: var(--color-cloud-light);
+      border-radius: calc(var(--cloud-size) / 8);
+      border-bottom: var(--color-cloud-dark) calc(var(--cloud-size) * .07) solid;
+      &::before{
+         position: absolute;
+         background-color: var(--color-cloud-light);
+         top: auto;
+         bottom: 44%;
+         left: 13%;
+         width: calc(var(--cloud-size) * .4);
+         height: calc(var(--cloud-size) * .4);
+         border-radius: calc(var(--cloud-size) * .2);
+      }
+      &::after{
+         // position: absolute;
+         // background-color: var(--color-cloud-light);
+         // top: auto;
+         // left: auto;
+         // bottom: 0;
+         // right: 4%;
+         // width: calc(var(--cloud-size) * .6);
+         // height: calc(var(--cloud-size) * .6);
+         // border-radius: calc(var(--cloud-size) * .3);
+      }
+      &_dark {
+         width: calc(var(--cloud-size) * .35);
+         height: calc(var(--cloud-size) * .35);
+         top: auto;
+         left: calc(var(--cloud-size) * 0.2);
+         bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.1));
+         border-radius: calc(var(--cloud-size) * .175);
+         position: absolute;
+         background-color: var(--color-cloud-dark);
+         border-bottom: var(--color-cloud-darkest) calc(var(--cloud-size) * .04) solid;
+         box-sizing: border-box;
+         &::before{
+            width: calc(var(--cloud-size) * .25);
+            height: calc(var(--cloud-size) * .25);
+            top: auto;
+            left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.1));
+            bottom: 0;
+            border-radius: calc(var( --cloud-size) * .175);
+            position: absolute;
+            background-color: var( --color-cloud-dark);
+            border-bottom: var(--color-cloud-darkest) calc(var(--cloud-size) * .04) solid;
+            box-sizing: border-box;         }
+         &::after{
+            width: calc(var(--cloud-size) * .4);
+            height: calc(var(--cloud-size) * .4);
+            top: auto;
+            left: calc(var(--cloud-size) * 0.2);
+            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
+            border-radius: calc(var(--cloud-size) * .2);
+            position: absolute;
+            background-color: var(--color-cloud-dark);
+            border-bottom: var(--color-cloud-darkest) calc(var(--cloud-size) * .04) solid;
+            box-sizing: border-box;
+         }
+   }
+      &_medium {
+         width: calc(var(--cloud-size) * .5);
+         height: calc(var(--cloud-size) * .5);
+         border-radius: calc(var(--cloud-size) * .25);
+         left: calc(var(--cloud-size) * .4);
+         top: auto;
+         bottom: calc(var(--cloud-size) * .04);
+         position: absolute;
+         background-color: var(--color-cloud-light);
+         border-bottom: var(--color-cloud-dark) calc(var(--cloud-size) * .04) solid;
+         box-sizing: border-box;
+         &::before{
+            width: calc(var(--cloud-size) * .25);
+            height: calc(var(--cloud-size) * .25);
+            left: calc(var(--cloud-size) * 0.3);
+            border-radius: calc(var(--cloud-size) * .175);
+            top: auto;
+            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.07));
+            position: absolute;
+            background-color: var(--color-cloud-light);
+            border-bottom: var(--color-cloud-dark) calc(var(--cloud-size) * .04) solid;
+            box-sizing: border-box;
+         }
+         &::after{
+            width: calc(var(--cloud-size) * .35);
+            height: calc(var(--cloud-size) * .35);
+            left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.4));
+            border-radius: calc(var(--cloud-size) * .175);
+            top: auto;
+            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
+            position: absolute;
+            background-color: var(--color-cloud-light);
+            border-bottom: var(--color-cloud-dark) calc(var(--cloud-size) * .04) solid;
+            box-sizing: border-box;
+         }
+      }
+      &_light {
+         width: calc(var(--cloud-size) * .3);
+         height: calc(var(--cloud-size) * .3);
+         top: auto;
+         left: calc(var(--cloud-size) * 0.3);
+         bottom: calc(var(--cloud-size) * .1);
+         border-radius: calc(var(--cloud-size) * .15);
+         position: absolute;
+         background-color: var(--color-cloud-lightest);
+         // border-bottom: var(--color-cloud-dark) calc(var(--cloud-size) * .04) solid;
+         // box-sizing: border-box;
+         &::before{
+            width: calc(var(--cloud-size) * .25);
+            height: calc(var(--cloud-size) * .25);
+            top: auto;
+            left: calc(var(--cloud-size) * 0.25);
+            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1));
+            border-radius: calc(var(--cloud-size) * .125);
+            position: absolute;
+            background-color: var(--color-cloud-lightest);
+            // border-bottom: var(--color-cloud-dark) calc(var(--cloud-size) * .04) solid;
+            box-sizing: border-box;
+            }
+         &::after{
+            width: calc(var(--cloud-size) * .2);
+            height: calc(var(--cloud-size) * .2);
+            top: auto;
+            left: calc(var(--cloud-size) * 0.25);
+            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * .83));
+            border-radius: calc(var(--cloud-size) * .1);
+            position: absolute;
+            background-color: var(--color-cloud-lightest);
+            // border-bottom: var(--color-cloud-light) calc(var(--cloud-size) * .04) solid;
+
+            // box-sizing: border-box;
+         }
+      }
    }
 }
 
