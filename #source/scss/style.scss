@@ -6,18 +6,17 @@ body, html {margin: 0;}
 
 // === CITY RIVER === 
 
-.block1 *, .block1 *::before, .block1 *::after{
+.b1 *, .b1 *::before, .b1 *::after{
    // position: absolute;
    content: '';
 }
-.block1 *, .block1 *::before, .block1 *::after{
+.b1 *, .b1 *::before, .b1 *::after{
    top: 0;
    left: 0;
    width: 20px;
    height: 20px;
-
 }
-.block1 {
+.b1 {
    // === Colors === 
    //Sky
    --hue-sky: 185;
@@ -40,41 +39,43 @@ body, html {margin: 0;}
    // --color-sky-dark: hsl(191, 50%, 70%);
    // --color-sky-darkest: hsl(196, 44%, 60%);
 
-
    position: relative;
-   &__container {
+   &-container {
       width: 800px;
       height: 600px;
       margin: auto;
    }
-   &__sky {
+   &-sky {
       width: 800px;
       height: 300px;
       background: linear-gradient(var(--color-sky-top) 0%, var(--color-sky-bottom) 100%);
       display: flex;
       flex-direction: column-reverse;
    }
-   &__sun {
+   &-sun {
       position: absolute;
    }
-   &__smoke {
+   &-smoke {
       position: absolute;
    }
-   &__clouds-bottom {
+   &-clouds__bottom {
       height: 20%;
       width: 100%;
    }
-   &__clouds-middle {
+   &-clouds__middle {
       height: 30%;
       width: 100%;
       position: relative;
    }
-   &__clouds-top {
+   &-clouds__top {
       height: 40%;
       width: 100%;
    }
-   &__cloud {
-      --cloud-size: 100px;
+   &-cloud {
+      --cloud-size-g: 130px;
+      --cloud-size-t: calc(var(--cloud-size-g) * 1.3);
+      --cloud-size-m: calc(var(--cloud-size-g) * 1);
+      --cloud-size-b: calc(var(--cloud-size-g) * .7);
       position: absolute;
       box-sizing: border-box;
       top: 50%;
@@ -88,22 +89,22 @@ body, html {margin: 0;}
          position: absolute;
          background-color: var(--color-cloud-light);
          top: auto;
-         bottom: 44%;
-         left: 13%;
+         bottom: calc(var(--cloud-size) * .2);
+         left: calc(var(--cloud-size) * .15);
          width: calc(var(--cloud-size) * .4);
          height: calc(var(--cloud-size) * .4);
          border-radius: calc(var(--cloud-size) * .2);
       }
       &::after{
-         // position: absolute;
-         // background-color: var(--color-cloud-light);
-         // top: auto;
-         // left: auto;
-         // bottom: 0;
-         // right: 4%;
-         // width: calc(var(--cloud-size) * .6);
-         // height: calc(var(--cloud-size) * .6);
-         // border-radius: calc(var(--cloud-size) * .3);
+         position: absolute;
+         background-color: var(--color-cloud-lightest);
+         top: auto;
+         left: auto;
+         bottom: calc(var(--cloud-size) * .25);
+         right: calc(var(--cloud-size) * .175);
+         width: calc(var(--cloud-size) * .15);
+         height: calc(var(--cloud-size) * .15);
+         border-radius: calc(var(--cloud-size) * .075);
       }
       &_dark {
          width: calc(var(--cloud-size) * .35);
@@ -140,7 +141,7 @@ body, html {margin: 0;}
             box-sizing: border-box;
          }
    }
-      &_medium {
+      &_medium{
          width: calc(var(--cloud-size) * .5);
          height: calc(var(--cloud-size) * .5);
          border-radius: calc(var(--cloud-size) * .25);
@@ -176,7 +177,7 @@ body, html {margin: 0;}
             box-sizing: border-box;
          }
       }
-      &_light {
+      &_light{
          width: calc(var(--cloud-size) * .3);
          height: calc(var(--cloud-size) * .3);
          top: auto;
@@ -211,6 +212,100 @@ body, html {margin: 0;}
             // border-bottom: var(--color-cloud-light) calc(var(--cloud-size) * .04) solid;
 
             // box-sizing: border-box;
+         }
+      }
+   }
+   &-cloud_1,
+   &-cloud_4{
+      --cloud-size: calc(var(--cloud-size-m) * 1);
+      left: 0;
+   }
+   &-cloud_2,
+   &-cloud_5{
+      --cloud-size: calc(var(--cloud-size-m) * .9);
+      left: 20%;
+      top: 60%;
+      &::before{
+         width: calc(var(--cloud-size) * .6);
+         height: calc(var(--cloud-size) * .6);
+         border-radius: calc(var(--cloud-size) * .3);
+         bottom: calc(var(--cloud-size) * .02);
+      }
+      &::after{
+         right: calc(var(--cloud-size) * .55);
+         bottom: calc(var(--cloud-size) * .4);
+      }
+      & .b1-cloud_dark{
+         &::before{
+            width: calc(var(--cloud-size) * .45);
+            height: calc(var(--cloud-size) * .45);
+            left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
+            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.1));
+            border-radius: calc(var( --cloud-size) * .225);
+         }
+      }
+   }
+   &-cloud_3{
+      --cloud-size: calc(var(--cloud-size-m) * 1.1);
+      top: 30%;
+      left: 35%;
+      height: calc(var(--cloud-size) / 3);
+      width: calc(var(--cloud-size) * 1.1);
+      border-radius: calc(var(--cloud-size) * .15);
+      &::after{
+         right: calc(var(--cloud-size) * .2);
+         bottom: calc(var(--cloud-size) * .15);
+      }
+      & .b1-cloud_dark{
+         bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
+         &::before{
+            left: calc(var(--cloud-size) - calc(var(--cloud-size) * .5));
+         }
+      }
+      & .b1-cloud_medium{
+         width: calc(var(--cloud-size) * .6);
+         height: calc(var(--cloud-size) * .6);
+         border-radius: calc(var(--cloud-size) * .3);
+      }
+      & .b1-cloud_light{
+         bottom: calc(var(--cloud-size) * .2);
+         width: calc(var(--cloud-size) * .2);
+         height: calc(var(--cloud-size) * .2);
+         &::before{
+            width: calc(var(--cloud-size) * .3);
+            height: calc(var(--cloud-size) * .3);
+            border-radius: calc(var(--cloud-size) * .15);
+         }
+         &::after{
+            left: calc(var(--cloud-size) * 0.15);
+            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * .9));
+         }
+      }
+   }
+   &-cloud_4{
+      --cloud-size: calc(var(--cloud-size-m) * .85);
+      left: 60%;
+      top: 70%;
+      &::before{
+         width: calc(var(--cloud-size) * .3);
+         height: calc(var(--cloud-size) * .3);
+         border-radius: calc(var(--cloud-size) * .15);
+      }
+   }
+   &-cloud_5{
+      --cloud-size: calc(var(--cloud-size-m) * 1.1);
+      left: 80%;
+      top: 30%;
+      & .b1-cloud_dark{
+         &::before{
+            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * .95));
+            left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
+            height: calc(var(--cloud-size) * .2);
+            width: calc(var(--cloud-size) * .2);
+            border-radius: calc(var( --cloud-size) * .1);
+         }
+         &::after{
+            left: calc(var(--cloud-size) * 0.3);
          }
       }
    }

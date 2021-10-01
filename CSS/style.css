@@ -6,18 +6,18 @@ body, html {
   max-width: 1280;
 }
 
-.block1 *, .block1 *::before, .block1 *::after {
+.b1 *, .b1 *::before, .b1 *::after {
   content: '';
 }
 
-.block1 *, .block1 *::before, .block1 *::after {
+.b1 *, .b1 *::before, .b1 *::after {
   top: 0;
   left: 0;
   width: 20px;
   height: 20px;
 }
 
-.block1 {
+.b1 {
   --hue-sky: 185;
   --saturation-sky: 92%;
   --lightness-sky: 70%;
@@ -37,13 +37,13 @@ body, html {
   position: relative;
 }
 
-.block1__container {
+.b1-container {
   width: 800px;
   height: 600px;
   margin: auto;
 }
 
-.block1__sky {
+.b1-sky {
   width: 800px;
   height: 300px;
   background: -webkit-gradient(linear, left top, left bottom, from(var(--color-sky-top)), to(var(--color-sky-bottom)));
@@ -61,32 +61,38 @@ body, html {
           flex-direction: column-reverse;
 }
 
-.block1__sun {
+.b1-sun {
   position: absolute;
 }
 
-.block1__smoke {
+.b1-smoke {
   position: absolute;
 }
 
-.block1__clouds-bottom {
+.b1-clouds__bottom {
   height: 20%;
   width: 100%;
 }
 
-.block1__clouds-middle {
+.b1-clouds__middle {
   height: 30%;
   width: 100%;
   position: relative;
 }
 
-.block1__clouds-top {
+.b1-clouds__top {
   height: 40%;
   width: 100%;
 }
 
-.block1__cloud {
-  --cloud-size: 100px;
+.b1-cloud {
+  --cloud-size-g: 130px;
+  --cloud-size-t: -webkit-calc(var(--cloud-size-g) * 1.3);
+  --cloud-size-t: calc(var(--cloud-size-g) * 1.3);
+  --cloud-size-m: -webkit-calc(var(--cloud-size-g) * 1);
+  --cloud-size-m: calc(var(--cloud-size-g) * 1);
+  --cloud-size-b: -webkit-calc(var(--cloud-size-g) * .7);
+  --cloud-size-b: calc(var(--cloud-size-g) * .7);
   position: absolute;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -102,12 +108,14 @@ body, html {
   border-bottom: var(--color-cloud-dark) calc(var(--cloud-size) * .07) solid;
 }
 
-.block1__cloud::before {
+.b1-cloud::before {
   position: absolute;
   background-color: var(--color-cloud-light);
   top: auto;
-  bottom: 44%;
-  left: 13%;
+  bottom: -webkit-calc(var(--cloud-size) * .2);
+  bottom: calc(var(--cloud-size) * .2);
+  left: -webkit-calc(var(--cloud-size) * .15);
+  left: calc(var(--cloud-size) * .15);
   width: -webkit-calc(var(--cloud-size) * .4);
   width: calc(var(--cloud-size) * .4);
   height: -webkit-calc(var(--cloud-size) * .4);
@@ -116,7 +124,24 @@ body, html {
           border-radius: calc(var(--cloud-size) * .2);
 }
 
-.block1__cloud_dark {
+.b1-cloud::after {
+  position: absolute;
+  background-color: var(--color-cloud-lightest);
+  top: auto;
+  left: auto;
+  bottom: -webkit-calc(var(--cloud-size) * .25);
+  bottom: calc(var(--cloud-size) * .25);
+  right: -webkit-calc(var(--cloud-size) * .175);
+  right: calc(var(--cloud-size) * .175);
+  width: -webkit-calc(var(--cloud-size) * .15);
+  width: calc(var(--cloud-size) * .15);
+  height: -webkit-calc(var(--cloud-size) * .15);
+  height: calc(var(--cloud-size) * .15);
+  -webkit-border-radius: -webkit-calc(var(--cloud-size) * .075);
+          border-radius: calc(var(--cloud-size) * .075);
+}
+
+.b1-cloud_dark {
   width: -webkit-calc(var(--cloud-size) * .35);
   width: calc(var(--cloud-size) * .35);
   height: -webkit-calc(var(--cloud-size) * .35);
@@ -136,7 +161,7 @@ body, html {
           box-sizing: border-box;
 }
 
-.block1__cloud_dark::before {
+.b1-cloud_dark::before {
   width: -webkit-calc(var(--cloud-size) * .25);
   width: calc(var(--cloud-size) * .25);
   height: -webkit-calc(var(--cloud-size) * .25);
@@ -155,7 +180,7 @@ body, html {
           box-sizing: border-box;
 }
 
-.block1__cloud_dark::after {
+.b1-cloud_dark::after {
   width: -webkit-calc(var(--cloud-size) * .4);
   width: calc(var(--cloud-size) * .4);
   height: -webkit-calc(var(--cloud-size) * .4);
@@ -175,7 +200,7 @@ body, html {
           box-sizing: border-box;
 }
 
-.block1__cloud_medium {
+.b1-cloud_medium {
   width: -webkit-calc(var(--cloud-size) * .5);
   width: calc(var(--cloud-size) * .5);
   height: -webkit-calc(var(--cloud-size) * .5);
@@ -195,7 +220,7 @@ body, html {
           box-sizing: border-box;
 }
 
-.block1__cloud_medium::before {
+.b1-cloud_medium::before {
   width: -webkit-calc(var(--cloud-size) * .25);
   width: calc(var(--cloud-size) * .25);
   height: -webkit-calc(var(--cloud-size) * .25);
@@ -215,7 +240,7 @@ body, html {
           box-sizing: border-box;
 }
 
-.block1__cloud_medium::after {
+.b1-cloud_medium::after {
   width: -webkit-calc(var(--cloud-size) * .35);
   width: calc(var(--cloud-size) * .35);
   height: -webkit-calc(var(--cloud-size) * .35);
@@ -235,7 +260,7 @@ body, html {
           box-sizing: border-box;
 }
 
-.block1__cloud_light {
+.b1-cloud_light {
   width: -webkit-calc(var(--cloud-size) * .3);
   width: calc(var(--cloud-size) * .3);
   height: -webkit-calc(var(--cloud-size) * .3);
@@ -251,7 +276,7 @@ body, html {
   background-color: var(--color-cloud-lightest);
 }
 
-.block1__cloud_light::before {
+.b1-cloud_light::before {
   width: -webkit-calc(var(--cloud-size) * .25);
   width: calc(var(--cloud-size) * .25);
   height: -webkit-calc(var(--cloud-size) * .25);
@@ -269,7 +294,7 @@ body, html {
           box-sizing: border-box;
 }
 
-.block1__cloud_light::after {
+.b1-cloud_light::after {
   width: -webkit-calc(var(--cloud-size) * .2);
   width: calc(var(--cloud-size) * .2);
   height: -webkit-calc(var(--cloud-size) * .2);
@@ -283,4 +308,153 @@ body, html {
           border-radius: calc(var(--cloud-size) * .1);
   position: absolute;
   background-color: var(--color-cloud-lightest);
+}
+
+.b1-cloud_1, .b1-cloud_4 {
+  --cloud-size: -webkit-calc(var(--cloud-size-m) * 1);
+  --cloud-size: calc(var(--cloud-size-m) * 1);
+  left: 0;
+}
+
+.b1-cloud_2, .b1-cloud_5 {
+  --cloud-size: -webkit-calc(var(--cloud-size-m) * .9);
+  --cloud-size: calc(var(--cloud-size-m) * .9);
+  left: 20%;
+  top: 60%;
+}
+
+.b1-cloud_2::before, .b1-cloud_5::before {
+  width: -webkit-calc(var(--cloud-size) * .6);
+  width: calc(var(--cloud-size) * .6);
+  height: -webkit-calc(var(--cloud-size) * .6);
+  height: calc(var(--cloud-size) * .6);
+  -webkit-border-radius: -webkit-calc(var(--cloud-size) * .3);
+          border-radius: calc(var(--cloud-size) * .3);
+  bottom: -webkit-calc(var(--cloud-size) * .02);
+  bottom: calc(var(--cloud-size) * .02);
+}
+
+.b1-cloud_2::after, .b1-cloud_5::after {
+  right: -webkit-calc(var(--cloud-size) * .55);
+  right: calc(var(--cloud-size) * .55);
+  bottom: -webkit-calc(var(--cloud-size) * .4);
+  bottom: calc(var(--cloud-size) * .4);
+}
+
+.b1-cloud_2 .b1-cloud_dark::before, .b1-cloud_5 .b1-cloud_dark::before {
+  width: -webkit-calc(var(--cloud-size) * .45);
+  width: calc(var(--cloud-size) * .45);
+  height: -webkit-calc(var(--cloud-size) * .45);
+  height: calc(var(--cloud-size) * .45);
+  left: -webkit-calc(var(--cloud-size) - -webkit-calc(var(--cloud-size) * 1.05));
+  left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
+  bottom: -webkit-calc(var(--cloud-size) - -webkit-calc(var(--cloud-size) * 1.1));
+  bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.1));
+  -webkit-border-radius: -webkit-calc(var( --cloud-size) * .225);
+          border-radius: calc(var( --cloud-size) * .225);
+}
+
+.b1-cloud_3 {
+  --cloud-size: -webkit-calc(var(--cloud-size-m) * 1.1);
+  --cloud-size: calc(var(--cloud-size-m) * 1.1);
+  top: 30%;
+  left: 35%;
+  height: -webkit-calc(var(--cloud-size) / 3);
+  height: calc(var(--cloud-size) / 3);
+  width: -webkit-calc(var(--cloud-size) * 1.1);
+  width: calc(var(--cloud-size) * 1.1);
+  -webkit-border-radius: -webkit-calc(var(--cloud-size) * .15);
+          border-radius: calc(var(--cloud-size) * .15);
+}
+
+.b1-cloud_3::after {
+  right: -webkit-calc(var(--cloud-size) * .2);
+  right: calc(var(--cloud-size) * .2);
+  bottom: -webkit-calc(var(--cloud-size) * .15);
+  bottom: calc(var(--cloud-size) * .15);
+}
+
+.b1-cloud_3 .b1-cloud_dark {
+  bottom: -webkit-calc(var(--cloud-size) - -webkit-calc(var(--cloud-size) * 1.05));
+  bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
+}
+
+.b1-cloud_3 .b1-cloud_dark::before {
+  left: -webkit-calc(var(--cloud-size) - -webkit-calc(var(--cloud-size) * .5));
+  left: calc(var(--cloud-size) - calc(var(--cloud-size) * .5));
+}
+
+.b1-cloud_3 .b1-cloud_medium {
+  width: -webkit-calc(var(--cloud-size) * .6);
+  width: calc(var(--cloud-size) * .6);
+  height: -webkit-calc(var(--cloud-size) * .6);
+  height: calc(var(--cloud-size) * .6);
+  -webkit-border-radius: -webkit-calc(var(--cloud-size) * .3);
+          border-radius: calc(var(--cloud-size) * .3);
+}
+
+.b1-cloud_3 .b1-cloud_light {
+  bottom: -webkit-calc(var(--cloud-size) * .2);
+  bottom: calc(var(--cloud-size) * .2);
+  width: -webkit-calc(var(--cloud-size) * .2);
+  width: calc(var(--cloud-size) * .2);
+  height: -webkit-calc(var(--cloud-size) * .2);
+  height: calc(var(--cloud-size) * .2);
+}
+
+.b1-cloud_3 .b1-cloud_light::before {
+  width: -webkit-calc(var(--cloud-size) * .3);
+  width: calc(var(--cloud-size) * .3);
+  height: -webkit-calc(var(--cloud-size) * .3);
+  height: calc(var(--cloud-size) * .3);
+  -webkit-border-radius: -webkit-calc(var(--cloud-size) * .15);
+          border-radius: calc(var(--cloud-size) * .15);
+}
+
+.b1-cloud_3 .b1-cloud_light::after {
+  left: -webkit-calc(var(--cloud-size) * 0.15);
+  left: calc(var(--cloud-size) * 0.15);
+  bottom: -webkit-calc(var(--cloud-size) - -webkit-calc(var(--cloud-size) * .9));
+  bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * .9));
+}
+
+.b1-cloud_4 {
+  --cloud-size: -webkit-calc(var(--cloud-size-m) * .85);
+  --cloud-size: calc(var(--cloud-size-m) * .85);
+  left: 60%;
+  top: 70%;
+}
+
+.b1-cloud_4::before {
+  width: -webkit-calc(var(--cloud-size) * .3);
+  width: calc(var(--cloud-size) * .3);
+  height: -webkit-calc(var(--cloud-size) * .3);
+  height: calc(var(--cloud-size) * .3);
+  -webkit-border-radius: -webkit-calc(var(--cloud-size) * .15);
+          border-radius: calc(var(--cloud-size) * .15);
+}
+
+.b1-cloud_5 {
+  --cloud-size: -webkit-calc(var(--cloud-size-m) * 1.1);
+  --cloud-size: calc(var(--cloud-size-m) * 1.1);
+  left: 80%;
+  top: 30%;
+}
+
+.b1-cloud_5 .b1-cloud_dark::before {
+  bottom: -webkit-calc(var(--cloud-size) - -webkit-calc(var(--cloud-size) * .95));
+  bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * .95));
+  left: -webkit-calc(var(--cloud-size) - -webkit-calc(var(--cloud-size) * 1.05));
+  left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
+  height: -webkit-calc(var(--cloud-size) * .2);
+  height: calc(var(--cloud-size) * .2);
+  width: -webkit-calc(var(--cloud-size) * .2);
+  width: calc(var(--cloud-size) * .2);
+  -webkit-border-radius: -webkit-calc(var( --cloud-size) * .1);
+          border-radius: calc(var( --cloud-size) * .1);
+}
+
+.b1-cloud_5 .b1-cloud_dark::after {
+  left: -webkit-calc(var(--cloud-size) * 0.3);
+  left: calc(var(--cloud-size) * 0.3);
 }
