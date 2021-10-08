@@ -34,6 +34,16 @@ body, html {margin: 0;}
    --color-cloud-dark: hsl(calc(var(--hue-cloud) + 6), calc(var(--saturation-cloud) + 12%), calc(var(--lightness-cloud) - 8%));
    --color-cloud-darkest: hsl(calc(var(--hue-cloud) + 11), calc(var(--saturation-cloud) + 6%), calc(var(--lightness-cloud) - 18%));
 
+   //Water
+   --hue-water: 181;
+   --saturation-water: 58%;
+   --lightness-water: 95%;
+   --color-water-lightest: hsl(calc(var(--hue-water) - 3), calc(var(--saturation-water) + 12%), calc(var(--lightness-water) + 10%));
+   --color-water-light: hsl(var(--hue-water), var(--saturation-water), var(--lightness-water));
+   --color-water-dark: hsl(calc(var(--hue-water) + 6), calc(var(--saturation-water) + 12%), calc(var(--lightness-water) - 45%));
+   --color-water-darkest: hsl(calc(var(--hue-water) + 11), calc(var(--saturation-water) + 6%), calc(var(--lightness-water) - 18%));
+   
+
    // --color-sky-lightest: hsl(180, 65%, 91%);
    // --color-sky-light: hsl(185, 38%, 78%);
    // --color-sky-dark: hsl(191, 50%, 70%);
@@ -217,190 +227,197 @@ body, html {margin: 0;}
             // box-sizing: border-box;
          }
       }
-   }
-   &-cloud_m1,
-   &-cloud_m4{
-      --cloud-size: calc(var(--cloud-size-m) * 1);
-      left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.1))
-      }
-   &-cloud_m2,
-   &-cloud_m5{
-      --cloud-size: calc(var(--cloud-size-m) * .9);
-      left: 20%;
-      top: 60%;
-      &::before{
-         width: calc(var(--cloud-size) * .6);
-         height: calc(var(--cloud-size) * .6);
-         border-radius: calc(var(--cloud-size) * .3);
-         bottom: calc(var(--cloud-size) * .02);
-      }
-      &::after{
-         right: calc(var(--cloud-size) * .55);
-         bottom: calc(var(--cloud-size) * .4);
-      }
-      & .b1-cloud_dark{
+
+      &_m1,
+      &_m4{
+         --cloud-size: calc(var(--cloud-size-m) * 1);
+         left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.1))
+         }
+      &_m2,
+      &_m5{
+         --cloud-size: calc(var(--cloud-size-m) * .9);
+         left: 20%;
+         top: 60%;
          &::before{
-            width: calc(var(--cloud-size) * .45);
-            height: calc(var(--cloud-size) * .45);
-            left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
-            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.1));
-            border-radius: calc(var( --cloud-size) * .225);
+            width: calc(var(--cloud-size) * .6);
+            height: calc(var(--cloud-size) * .6);
+            border-radius: calc(var(--cloud-size) * .3);
+            bottom: calc(var(--cloud-size) * .02);
+         }
+         &::after{
+            right: calc(var(--cloud-size) * .55);
+            bottom: calc(var(--cloud-size) * .4);
+         }
+         & .b1-cloud_dark{
+            &::before{
+               width: calc(var(--cloud-size) * .45);
+               height: calc(var(--cloud-size) * .45);
+               left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
+               bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.1));
+               border-radius: calc(var( --cloud-size) * .225);
+            }
          }
       }
-   }
-   &-cloud_m3{
-      --cloud-size: calc(var(--cloud-size-m) * 1.1);
-      top: 30%;
-      left: 35%;
-      height: calc(var(--cloud-size) / 3);
-      width: calc(var(--cloud-size) * 1.1);
-      border-radius: calc(var(--cloud-size) * .15);
-      &::after{
-         right: calc(var(--cloud-size) * .2);
-         bottom: calc(var(--cloud-size) * .15);
-      }
-      & .b1-cloud_dark{
-         bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
-         &::before{
-            left: calc(var(--cloud-size) - calc(var(--cloud-size) * .5));
+      &_m3{
+         --cloud-size: calc(var(--cloud-size-m) * 1.1);
+         top: 30%;
+         left: 35%;
+         height: calc(var(--cloud-size) / 3);
+         width: calc(var(--cloud-size) * 1.1);
+         border-radius: calc(var(--cloud-size) * .15);
+         &::after{
+            right: calc(var(--cloud-size) * .2);
+            bottom: calc(var(--cloud-size) * .15);
+         }
+         & .b1-cloud_dark{
+            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
+            &::before{
+               left: calc(var(--cloud-size) - calc(var(--cloud-size) * .5));
+            }
+         }
+         & .b1-cloud_medium{
+            width: calc(var(--cloud-size) * .6);
+            height: calc(var(--cloud-size) * .6);
+            border-radius: calc(var(--cloud-size) * .3);
+         }
+         & .b1-cloud_light{
+            bottom: calc(var(--cloud-size) * .2);
+            width: calc(var(--cloud-size) * .2);
+            height: calc(var(--cloud-size) * .2);
+            &::before{
+               width: calc(var(--cloud-size) * .3);
+               height: calc(var(--cloud-size) * .3);
+               border-radius: calc(var(--cloud-size) * .15);
+            }
+            &::after{
+               left: calc(var(--cloud-size) * 0.15);
+               bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * .9));
+            }
          }
       }
-      & .b1-cloud_medium{
-         width: calc(var(--cloud-size) * .6);
-         height: calc(var(--cloud-size) * .6);
-         border-radius: calc(var(--cloud-size) * .3);
-      }
-      & .b1-cloud_light{
-         bottom: calc(var(--cloud-size) * .2);
-         width: calc(var(--cloud-size) * .2);
-         height: calc(var(--cloud-size) * .2);
+      &_m4{
+         --cloud-size: calc(var(--cloud-size-m) * .85);
+         left: 60%;
+         top: 70%;
          &::before{
             width: calc(var(--cloud-size) * .3);
             height: calc(var(--cloud-size) * .3);
             border-radius: calc(var(--cloud-size) * .15);
          }
-         &::after{
-            left: calc(var(--cloud-size) * 0.15);
-            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * .9));
+      }
+      &_m5{
+         --cloud-size: calc(var(--cloud-size-m) * 1.1);
+         left: 80%;
+         top: 30%;
+         & .b1-cloud_dark{
+            &::before{
+               bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * .95));
+               left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
+               height: calc(var(--cloud-size) * .2);
+               width: calc(var(--cloud-size) * .2);
+               border-radius: calc(var( --cloud-size) * .1);
+            }
+            &::after{
+               left: calc(var(--cloud-size) * 0.3);
+            }
          }
       }
-   }
-   &-cloud_m4{
-      --cloud-size: calc(var(--cloud-size-m) * .85);
-      left: 60%;
-      top: 70%;
-      &::before{
-         width: calc(var(--cloud-size) * .3);
-         height: calc(var(--cloud-size) * .3);
-         border-radius: calc(var(--cloud-size) * .15);
-      }
-   }
-   &-cloud_m5{
-      --cloud-size: calc(var(--cloud-size-m) * 1.1);
-      left: 80%;
-      top: 30%;
-      & .b1-cloud_dark{
+      &_t1{
+         --cloud-size: calc(var(--cloud-size-t) * 1.1);
+         left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
+         top: 10%;
          &::before{
-            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * .95));
-            left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
-            height: calc(var(--cloud-size) * .2);
-            width: calc(var(--cloud-size) * .2);
-            border-radius: calc(var( --cloud-size) * .1);
+            left: calc(var(--cloud-size) * .07);
          }
          &::after{
-            left: calc(var(--cloud-size) * 0.3);
+            bottom: calc(var(--cloud-size) * .19);
+            right: calc(var(--cloud-size) * .8);
+         }
+         & .b1-cloud_dark{
+            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.15));
+            &::after{
+               bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1));
+            }
+         }
+         & .b1-cloud_medium{
+            &::before{
+               left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.2));
+               bottom: 0;
+            }
+            &::after{
+               left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.5));
+            }
+         }
+         & .b1-cloud_light{
+            bottom: calc(var(--cloud-size) * .25);
+            &::before{}
+            &::after{
+               left: calc(var(--cloud-size) * -0.15);
+            }
          }
       }
-   }
-   &-cloud_t1{
-      --cloud-size: calc(var(--cloud-size-t) * 1.1);
-      left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
-      top: 10%;
-      &::before{
-         left: calc(var(--cloud-size) * .07);
-      }
-      &::after{
-         bottom: calc(var(--cloud-size) * .19);
-         right: calc(var(--cloud-size) * .8);
-      }
-      & .b1-cloud_dark{
-         bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.15));
-         &::after{
-            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1));
+      &_t2{
+         --cloud-size: calc(var(--cloud-size-t) * 1);
+         left: 28%;
+         top: 15%;
+         & .b1-cloud_dark{
+            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.06));
+            width: calc(var(--cloud-size) * .4);
+            height: calc(var(--cloud-size) * .4);
+            border-radius: calc(var(--cloud-size) * .2);
+            &::before{
+               bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.1));
+               width: calc(var(--cloud-size) * .35);
+               height: calc(var(--cloud-size) * .35);
+               border-radius: calc(var( --cloud-size) * .175);
+            }
+            &::after{
+               left: calc(var(--cloud-size) * 0.3);
+               bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.08));
+            }
+         }
+         & .b1-cloud_light{
+            bottom: calc(var(--cloud-size) * .2);
+            left: calc(var(--cloud-size) * 0.2);
          }
       }
-      & .b1-cloud_medium{
-         &::before{
-            left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.2));
-            bottom: 0;
-         }
-         &::after{
-            left: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.5));
-         }
-      }
-      & .b1-cloud_light{
-         bottom: calc(var(--cloud-size) * .25);
-         &::before{}
-         &::after{
-            left: calc(var(--cloud-size) * -0.15);
-         }
-      }
-   }
-   &-cloud_t2{
-      --cloud-size: calc(var(--cloud-size-t) * 1);
-      left: 28%;
-      top: 15%;
-      & .b1-cloud_dark{
-         bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.06));
-         width: calc(var(--cloud-size) * .4);
-         height: calc(var(--cloud-size) * .4);
-         border-radius: calc(var(--cloud-size) * .2);
-         &::before{
+      &_t3{
+         --cloud-size: calc(var(--cloud-size-t) * 1.1);
+         left: 50%;
+         top: -11%;
+         & .b1-cloud_dark{
             bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.1));
-            width: calc(var(--cloud-size) * .35);
-            height: calc(var(--cloud-size) * .35);
-            border-radius: calc(var( --cloud-size) * .175);
          }
-         &::after{
-            left: calc(var(--cloud-size) * 0.3);
-            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.08));
+         & .b1-cloud_medium{
+            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.06));
          }
-      }
-      & .b1-cloud_light{
-         bottom: calc(var(--cloud-size) * .2);
-         left: calc(var(--cloud-size) * 0.2);
-      }
-   }
-   &-cloud_t3{
-      --cloud-size: calc(var(--cloud-size-t) * 1.1);
-      left: 50%;
-      top: -11%;
-      & .b1-cloud_dark{
-         bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.1));
-      }
-      & .b1-cloud_medium{
-         bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.06));
-      }
-      & .b1-cloud_light{
-         bottom: calc(var(--cloud-size) * .1);
-      }
-   }
-   &-cloud_t4{
-      --cloud-size: calc(var(--cloud-size-t) * .9);
-      left: 80%;
-      top: 44%;
-      & .b1-cloud_dark{
-         &::before{
-            bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
-            width: calc(var(--cloud-size) * .5);
-            height: calc(var(--cloud-size) * .5);
-            border-radius: calc(var( --cloud-size) * .25);
+         & .b1-cloud_light{
+            bottom: calc(var(--cloud-size) * .1);
          }
       }
-      & .b1-cloud_light{
-         left: calc(var(--cloud-size) * 0.2);
-         bottom: calc(var(--cloud-size) * .2);
+      &_t4{
+         --cloud-size: calc(var(--cloud-size-t) * .9);
+         left: 80%;
+         top: 44%;
+         & .b1-cloud_dark{
+            &::before{
+               bottom: calc(var(--cloud-size) - calc(var(--cloud-size) * 1.05));
+               width: calc(var(--cloud-size) * .5);
+               height: calc(var(--cloud-size) * .5);
+               border-radius: calc(var( --cloud-size) * .25);
+            }
+         }
+         & .b1-cloud_light{
+            left: calc(var(--cloud-size) * 0.2);
+            bottom: calc(var(--cloud-size) * .2);
+         }
       }
+      }
+
+   &-water{
+      background: linear-gradient(var(--color-water-light) 0%, var(--color-water-dark) 100%);
+      width: 100%;
+      height: 50%;
    }
 }
 
